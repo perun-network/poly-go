@@ -18,4 +18,4 @@
 //
 // Packages in pkg are split by topic, such as sync for synchronization
 // primities and test for testing helpers.
-package pkg // import "perun.network/go-perun/pkg"
+package pkg // import "polycry.pt/poly-go"

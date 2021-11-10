@@ -18,7 +18,7 @@
 // go-ethereum's https://github.com/ethereum/go-ethereum/ethdb and
 // https://github.com/ethereum/go-ethereum/core/rawdb and is also inspired by
 // perkeep.org/pkg/sorted
-package sortedkv // import "perun.network/go-perun/pkg/sortedkv"
+package sortedkv // import "polycry.pt/poly-go/sortedkv"
 
 import "io"
 

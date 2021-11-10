@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package context contains helper utilities regarding go contexts.
-package context // import "perun.network/go-perun/pkg/context"
+package context // import "polycry.pt/poly-go/context"
 
 import (
 	"context"

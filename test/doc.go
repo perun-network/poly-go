@@ -13,4 +13,4 @@
 // limitations under the License.
 
 // Package test contains Perun independent testing functionality.
-package test // import "perun.network/go-perun/pkg/test"
+package test // import "polycry.pt/poly-go/test"

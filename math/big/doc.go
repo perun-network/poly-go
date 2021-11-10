@@ -14,4 +14,4 @@
 
 // Package big contains generic functions that operate on big.Int and can
 // be used independently of go-perun.
-package big // import "perun.network/go-perun/pkg/math/big"
+package big // import "polycry.pt/poly-go/math/big"

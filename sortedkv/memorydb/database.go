@@ -22,7 +22,7 @@
 // The NewDatabase() constructor creates a new empty database. The FromData()
 // constructor takes a key-value mapping and uses that as the database's
 // contents.
-package memorydb // import "perun.network/go-perun/pkg/sortedkv/memorydb"
+package memorydb // import "polycry.pt/poly-go/sortedkv/memorydb"
 
 import (
 	"perun.network/go-perun/pkg/sortedkv"

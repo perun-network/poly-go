@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package sync contains a mutex that can be used in a select statement.
-package sync // import "perun.network/go-perun/pkg/sync"
+package sync // import "polycry.pt/poly-go/sync"
 
 import (
 	"context"

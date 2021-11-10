@@ -16,7 +16,7 @@
 // implementations of the Database interface.
 // Test your implementation by passing an empty database to the
 // GenericDatabaseTest() function
-package test // import "perun.network/go-perun/pkg/sortedkv/test"
+package test // import "polycry.pt/poly-go/sortedkv/test"
 
 import (
 	"bytes"

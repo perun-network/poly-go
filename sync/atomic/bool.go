@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package atomic contains extensions of "sync/atomic"
-package atomic // import "perun.network/go-perun/pkg/sync/atomic"
+package atomic // import "polycry.pt/poly-go/sync/atomic"
 
 import "sync/atomic"
 

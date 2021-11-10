@@ -13,4 +13,4 @@
 // limitations under the License.
 
 // Package leveldb implements the key-value database interface using LevelDB.
-package leveldb // import "perun.network/go-perun/pkg/sortedkv/leveldb"
+package leveldb // import "polycry.pt/poly-go/sortedkv/leveldb"

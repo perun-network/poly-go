@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package key of sortedkv provides helper functions to manipulate db keys
-package key // import "perun.network/go-perun/pkg/sortedkv/key"
+package key // import "polycry.pt/poly-go/sortedkv/key"
 
 // Next returns the key with a zero byte appended, which is the next key in the
 // lexicographical order of strings

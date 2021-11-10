@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package test tests the helper utilities regarding go contexts.
-package test // import "perun.network/go-perun/pkg/context/test"
+package test // import "polycry.pt/poly-go/context/test"
 
 import (
 	"context"

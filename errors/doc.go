@@ -14,4 +14,4 @@
 
 // Package errors contains functionality for simplifying and improving error
 // handling.
-package errors // import "perun.network/go-perun/pkg/errors"
+package errors // import "polycry.pt/poly-go/errors"
