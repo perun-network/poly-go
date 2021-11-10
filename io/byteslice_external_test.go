@@ -21,12 +21,12 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	perunio "polycry.pt/poly-go/io"
+	polyio "polycry.pt/poly-go/io"
 	iotest "polycry.pt/poly-go/io/test"
 )
 
 func TestByteSlice(t *testing.T) {
-	var v1, v2, v3, v4 perunio.ByteSlice = []byte{}, []byte{255}, []byte{1, 2, 3, 4, 5, 6}, make([]byte, 20000)
+	var v1, v2, v3, v4 polyio.ByteSlice = []byte{}, []byte{255}, []byte{1, 2, 3, 4, 5, 6}, make([]byte, 20000)
 	testByteSlices(t, v1, v2, v3, v4)
 	iotest.GenericBrokenPipeTest(t, &v1, &v2, &v3, &v4)
 }
@@ -42,14 +42,14 @@ func TestStutter(t *testing.T) {
 		}
 	}()
 
-	var decodedValue perunio.ByteSlice = make([]byte, len(values))
+	var decodedValue polyio.ByteSlice = make([]byte, len(values))
 	assert.Nil(t, decodedValue.Decode(r))
 	for i, v := range values {
 		assert.Equal(t, decodedValue[i], v)
 	}
 }
 
-func testByteSlices(t *testing.T, serial ...perunio.ByteSlice) {
+func testByteSlices(t *testing.T, serial ...polyio.ByteSlice) {
 	a := assert.New(t)
 	r, w := io.Pipe()
 	done := make(chan struct{})
@@ -63,7 +63,7 @@ func testByteSlices(t *testing.T, serial ...perunio.ByteSlice) {
 
 	for i, v := range serial {
 		d := make([]byte, len(v))
-		dest := perunio.ByteSlice(d)
+		dest := polyio.ByteSlice(d)
 
 		a.NoError(dest.Decode(r), "failed to decode element")
 

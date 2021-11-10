@@ -22,12 +22,12 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	pkgtest "polycry.pt/poly-go/test"
+	polytest "polycry.pt/poly-go/test"
 )
 
 func TestEncodeDecodeString(t *testing.T) {
 	assert := assert.New(t)
-	rng := pkgtest.Prng(t)
+	rng := polytest.Prng(t)
 	uint8buf, uint16buf := make([]byte, math.MaxUint8), make([]byte, math.MaxUint16)
 	rng.Read(uint8buf)
 	rng.Read(uint16buf)

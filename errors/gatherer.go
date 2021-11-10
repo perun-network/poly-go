@@ -22,7 +22,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	pkgsync "polycry.pt/poly-go/sync"
+	polysync "polycry.pt/poly-go/sync"
 )
 
 // NewGatherer creates a new error gatherer.
@@ -36,7 +36,7 @@ func NewGatherer() *Gatherer {
 type Gatherer struct {
 	mutex sync.Mutex
 	errs  accumulatedError
-	wg    pkgsync.WaitGroup
+	wg    polysync.WaitGroup
 
 	onFails []func()
 	failed  chan struct{} // Closed when an error has occurred.

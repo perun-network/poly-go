@@ -20,12 +20,12 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"polycry.pt/poly-go/io"
-	pkgtest "polycry.pt/poly-go/test"
+	polytest "polycry.pt/poly-go/test"
 )
 
 // TestEqualEncoding tests EqualEncoding.
 func TestEqualEncoding(t *testing.T) {
-	rng := pkgtest.Prng(t)
+	rng := polytest.Prng(t)
 	a := make(io.ByteSlice, 10)
 	b := make(io.ByteSlice, 10)
 	c := make(io.ByteSlice, 12)

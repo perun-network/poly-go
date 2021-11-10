@@ -24,7 +24,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	peruntest "polycry.pt/poly-go/test"
+	polytest "polycry.pt/poly-go/test"
 )
 
 func TestWrongTypes(t *testing.T) {
@@ -42,15 +42,15 @@ func TestWrongTypes(t *testing.T) {
 	for _i, _v := range values {
 		v := _v
 		i := _i
-		panics, _ := peruntest.CheckPanic(func() { Encode(w, v) })
+		panics, _ := polytest.CheckPanic(func() { Encode(w, v) })
 		assert.True(t, panics, "Encode() must panic on invalid type %T", v)
 
 		d[i] = reflect.New(reflect.TypeOf(v)).Interface()
-		panics, _ = peruntest.CheckPanic(func() { Decode(r, d[i]) })
+		panics, _ = polytest.CheckPanic(func() { Decode(r, d[i]) })
 		assert.True(t, panics, "Decode() must panic on invalid type %T", v)
 	}
 
-	peruntest.CheckPanic(func() { Decode(r, d...) })
+	polytest.CheckPanic(func() { Decode(r, d...) })
 }
 
 func TestEncodeDecode(t *testing.T) {

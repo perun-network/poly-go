@@ -19,7 +19,7 @@ import (
 	"context"
 	"time"
 
-	pkg "polycry.pt/poly-go/context"
+	polyctx "polycry.pt/poly-go/context"
 	"polycry.pt/poly-go/test"
 )
 
@@ -28,7 +28,7 @@ import (
 func AssertTerminatesCtx(ctx context.Context, t test.T, fn func()) {
 	t.Helper()
 
-	if !pkg.TerminatesCtx(ctx, fn) {
+	if !polyctx.TerminatesCtx(ctx, fn) {
 		t.Errorf("function should have terminated within timeout")
 	}
 }
@@ -38,7 +38,7 @@ func AssertTerminatesCtx(ctx context.Context, t test.T, fn func()) {
 func AssertNotTerminatesCtx(ctx context.Context, t test.T, fn func()) {
 	t.Helper()
 
-	if pkg.TerminatesCtx(ctx, fn) {
+	if polyctx.TerminatesCtx(ctx, fn) {
 		t.Errorf("Function should not have terminated within timeout")
 	}
 }
@@ -48,7 +48,7 @@ func AssertNotTerminatesCtx(ctx context.Context, t test.T, fn func()) {
 func AssertTerminates(t test.T, timeout time.Duration, fn func()) {
 	t.Helper()
 
-	if !pkg.Terminates(timeout, fn) {
+	if !polyctx.Terminates(timeout, fn) {
 		t.Errorf("Function should have terminated within timeout")
 	}
 }
@@ -58,7 +58,7 @@ func AssertTerminates(t test.T, timeout time.Duration, fn func()) {
 func AssertNotTerminates(t test.T, timeout time.Duration, fn func()) {
 	t.Helper()
 
-	if pkg.Terminates(timeout, fn) {
+	if polyctx.Terminates(timeout, fn) {
 		t.Errorf("Function should not have terminated within timeout")
 	}
 }
@@ -67,7 +67,7 @@ func AssertNotTerminates(t test.T, timeout time.Duration, fn func()) {
 func AssertTerminatesQuickly(t test.T, fn func()) {
 	t.Helper()
 
-	if !pkg.TerminatesQuickly(fn) {
+	if !polyctx.TerminatesQuickly(fn) {
 		t.Errorf("Function should have terminated within timeout")
 	}
 }
@@ -77,7 +77,7 @@ func AssertTerminatesQuickly(t test.T, fn func()) {
 func AssertNotTerminatesQuickly(t test.T, fn func()) {
 	t.Helper()
 
-	if pkg.TerminatesQuickly(fn) {
+	if polyctx.TerminatesQuickly(fn) {
 		t.Errorf("Function should not have terminated within timeout")
 	}
 }

@@ -22,31 +22,31 @@ import (
 	"testing/iotest"
 
 	"github.com/stretchr/testify/assert"
-	perunio "polycry.pt/poly-go/io"
+	polyio "polycry.pt/poly-go/io"
 )
 
 // GenericSerializerTest runs multiple tests to check whether encoding
 // and decoding of serializer values works.
-func GenericSerializerTest(t *testing.T, serializers ...perunio.Serializer) {
+func GenericSerializerTest(t *testing.T, serializers ...polyio.Serializer) {
 	genericDecodeEncodeTest(t, serializers...)
 	GenericBrokenPipeTest(t, serializers...)
 }
 
 // genericDecodeEncodeTest tests whether encoding and then decoding
 // serializer values results in the original values.
-func genericDecodeEncodeTest(t *testing.T, serializers ...perunio.Serializer) {
+func genericDecodeEncodeTest(t *testing.T, serializers ...polyio.Serializer) {
 	for i, v := range serializers {
 		r, w := io.Pipe()
 		br := iotest.OneByteReader(r)
 		go func() {
-			if err := perunio.Encode(w, v); err != nil {
+			if err := polyio.Encode(w, v); err != nil {
 				t.Errorf("failed to encode %dth element (%T): %+v", i, v, err)
 			}
 			w.Close()
 		}()
 
 		dest := reflect.New(reflect.TypeOf(v).Elem())
-		err := perunio.Decode(br, dest.Interface().(perunio.Serializer))
+		err := polyio.Decode(br, dest.Interface().(polyio.Serializer))
 		r.Close()
 		if err != nil {
 			t.Errorf("failed to decode %dth element (%T): %+v", i, v, err)
@@ -58,7 +58,7 @@ func genericDecodeEncodeTest(t *testing.T, serializers ...perunio.Serializer) {
 }
 
 // GenericBrokenPipeTest tests that encoding and decoding on broken streams fails.
-func GenericBrokenPipeTest(t *testing.T, serializers ...perunio.Serializer) {
+func GenericBrokenPipeTest(t *testing.T, serializers ...polyio.Serializer) {
 	for i, v := range serializers {
 		r, w := io.Pipe()
 		_ = w.Close()

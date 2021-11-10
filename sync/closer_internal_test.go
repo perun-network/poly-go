@@ -23,7 +23,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	perunatomic "polycry.pt/poly-go/sync/atomic"
+	polyatomic "polycry.pt/poly-go/sync/atomic"
 )
 
 func TestCloser_IsClosed(t *testing.T) {
@@ -76,7 +76,7 @@ func TestCloser_OnCloseAlways(t *testing.T) {
 
 	t.Run("before closing", func(t *testing.T) {
 		var c Closer
-		var executed perunatomic.Bool
+		var executed polyatomic.Bool
 
 		// OnCloseAlways must return true if called before closing.
 		assert.True(t, c.OnCloseAlways(executed.Set))
@@ -87,7 +87,7 @@ func TestCloser_OnCloseAlways(t *testing.T) {
 
 	t.Run("after closing", func(t *testing.T) {
 		var c Closer
-		var executed perunatomic.Bool
+		var executed polyatomic.Bool
 
 		c.Close()
 		// OnCloseAlways must return false if called after closing.
@@ -102,7 +102,7 @@ func TestCloser_OnClose(t *testing.T) {
 
 	t.Run("before closing", func(t *testing.T) {
 		var c Closer
-		var executed perunatomic.Bool
+		var executed polyatomic.Bool
 
 		// OnClose must return true if called before closing.
 		assert.True(t, c.OnClose(executed.Set))
@@ -113,7 +113,7 @@ func TestCloser_OnClose(t *testing.T) {
 
 	t.Run("after closing", func(t *testing.T) {
 		var c Closer
-		var executed perunatomic.Bool
+		var executed polyatomic.Bool
 
 		c.Close()
 		// OnClose must return false if called after closing.
