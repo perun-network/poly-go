@@ -25,7 +25,7 @@
 package memorydb // import "polycry.pt/poly-go/sortedkv/memorydb"
 
 import (
-	"perun.network/go-perun/pkg/sortedkv"
+	"polycry.pt/poly-go/sortedkv"
 
 	"sort"
 	"strings"

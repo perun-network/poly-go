@@ -22,7 +22,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	pkgsync "perun.network/go-perun/pkg/sync"
+	pkgsync "polycry.pt/poly-go/sync"
 )
 
 // NewGatherer creates a new error gatherer.

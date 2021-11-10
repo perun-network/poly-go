@@ -17,7 +17,7 @@ package test
 import (
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv"
+	"polycry.pt/poly-go/sortedkv"
 )
 
 // IteratorTest provides the values needed for the generic tests.

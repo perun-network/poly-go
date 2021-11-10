@@ -17,8 +17,8 @@ package memorydb
 import (
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv"
-	"perun.network/go-perun/pkg/sortedkv/test"
+	"polycry.pt/poly-go/sortedkv"
+	"polycry.pt/poly-go/sortedkv/test"
 )
 
 func TestIterator(t *testing.T) {

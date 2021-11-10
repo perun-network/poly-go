@@ -19,8 +19,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"perun.network/go-perun/pkg/io"
-	pkgtest "perun.network/go-perun/pkg/test"
+	"polycry.pt/poly-go/io"
+	pkgtest "polycry.pt/poly-go/test"
 )
 
 // TestEqualEncoding tests EqualEncoding.

@@ -19,7 +19,7 @@ import (
 	"testing"
 	"time"
 
-	"perun.network/go-perun/pkg/test"
+	"polycry.pt/poly-go/test"
 )
 
 const timeout = 200 * time.Millisecond

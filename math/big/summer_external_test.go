@@ -24,8 +24,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	pkgbig "perun.network/go-perun/pkg/math/big"
-	"perun.network/go-perun/pkg/test"
+	pkgbig "polycry.pt/poly-go/math/big"
+	"polycry.pt/poly-go/test"
 )
 
 func TestSummer(t *testing.T) {

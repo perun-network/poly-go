@@ -22,7 +22,7 @@ import (
 	"bytes"
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv"
+	"polycry.pt/poly-go/sortedkv"
 )
 
 // GenericDatabaseTest provides generic sortedkv tests.

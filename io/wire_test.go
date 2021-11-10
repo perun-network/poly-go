@@ -24,7 +24,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	peruntest "perun.network/go-perun/pkg/test"
+	peruntest "polycry.pt/poly-go/test"
 )
 
 func TestWrongTypes(t *testing.T) {

@@ -21,8 +21,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	perunio "perun.network/go-perun/pkg/io"
-	iotest "perun.network/go-perun/pkg/io/test"
+	perunio "polycry.pt/poly-go/io"
+	iotest "polycry.pt/poly-go/io/test"
 )
 
 func TestByteSlice(t *testing.T) {

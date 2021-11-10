@@ -17,7 +17,7 @@ package test
 import (
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv"
+	"polycry.pt/poly-go/sortedkv"
 )
 
 // GenericBatchTest is to be called from the batch implementation tests.

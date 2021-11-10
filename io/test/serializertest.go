@@ -22,7 +22,7 @@ import (
 	"testing/iotest"
 
 	"github.com/stretchr/testify/assert"
-	perunio "perun.network/go-perun/pkg/io"
+	perunio "polycry.pt/poly-go/io"
 )
 
 // GenericSerializerTest runs multiple tests to check whether encoding

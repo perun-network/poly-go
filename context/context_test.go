@@ -21,7 +21,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	pcontext "perun.network/go-perun/pkg/context"
+	pcontext "polycry.pt/poly-go/context"
 )
 
 func TestIsContextError(t *testing.T) {

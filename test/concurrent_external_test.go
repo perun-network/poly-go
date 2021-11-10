@@ -25,8 +25,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	ctxtest "perun.network/go-perun/pkg/context/test"
-	"perun.network/go-perun/pkg/test"
+	ctxtest "polycry.pt/poly-go/context/test"
+	"polycry.pt/poly-go/test"
 )
 
 const timeout = 200 * time.Millisecond

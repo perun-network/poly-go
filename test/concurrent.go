@@ -24,8 +24,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"perun.network/go-perun/pkg/sync"
-	"perun.network/go-perun/pkg/sync/atomic"
+	"polycry.pt/poly-go/sync"
+	"polycry.pt/poly-go/sync/atomic"
 )
 
 // ConcT is a testing object used by ConcurrentT stages. It can access the

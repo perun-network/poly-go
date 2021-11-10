@@ -17,8 +17,8 @@ package test
 import (
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv"
-	"perun.network/go-perun/pkg/sortedkv/key"
+	"polycry.pt/poly-go/sortedkv"
+	"polycry.pt/poly-go/sortedkv/key"
 )
 
 // GenericTableTest provides generic tests for table implementations.

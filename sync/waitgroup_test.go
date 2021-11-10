@@ -19,8 +19,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"perun.network/go-perun/pkg/context/test"
-	"perun.network/go-perun/pkg/sync"
+	"polycry.pt/poly-go/context/test"
+	"polycry.pt/poly-go/sync"
 )
 
 func TestWaitGoup(t *testing.T) {

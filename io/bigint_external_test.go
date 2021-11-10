@@ -21,8 +21,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	perunio "perun.network/go-perun/pkg/io"
-	"perun.network/go-perun/pkg/io/test"
+	perunio "polycry.pt/poly-go/io"
+	"polycry.pt/poly-go/io/test"
 )
 
 func TestBigInt_Generic(t *testing.T) {

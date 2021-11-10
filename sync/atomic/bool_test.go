@@ -19,7 +19,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"perun.network/go-perun/pkg/sync/atomic"
+	"polycry.pt/poly-go/sync/atomic"
 )
 
 func TestBool(t *testing.T) {

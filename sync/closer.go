@@ -21,7 +21,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"perun.network/go-perun/pkg/sync/atomic"
+	"polycry.pt/poly-go/sync/atomic"
 )
 
 // Closer is a utility type for implementing an "onclose" event.

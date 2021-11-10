@@ -17,7 +17,7 @@ package memorydb
 import (
 	"testing"
 
-	"perun.network/go-perun/pkg/sortedkv/test"
+	"polycry.pt/poly-go/sortedkv/test"
 )
 
 func TestDatabase(t *testing.T) {

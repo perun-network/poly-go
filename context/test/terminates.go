@@ -19,8 +19,8 @@ import (
 	"context"
 	"time"
 
-	pkg "perun.network/go-perun/pkg/context"
-	"perun.network/go-perun/pkg/test"
+	pkg "polycry.pt/poly-go/context"
+	"polycry.pt/poly-go/test"
 )
 
 // AssertTerminatesCtx asserts that a function terminates before a context is

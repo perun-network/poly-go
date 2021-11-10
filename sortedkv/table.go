@@ -14,7 +14,7 @@
 
 package sortedkv
 
-import "perun.network/go-perun/pkg/sortedkv/key"
+import "polycry.pt/poly-go/sortedkv/key"
 
 // Table is a wrapper around a database with a key prefix. All key access is
 // automatically prefixed. Close() is a noop and properties are forwarded
