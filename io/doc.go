@@ -13,6 +13,4 @@
 // limitations under the License.
 
 // Package io contains functionality for the serialization of standard Go types.
-// It is used in go-perun to (de)serialize wire messages and in some persistence
-// implementations.
 package io // import "polycry.pt/poly-go/io"

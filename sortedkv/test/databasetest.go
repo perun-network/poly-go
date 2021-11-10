@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package test of the go-perun/sortedkv package implements a generic test for all
-// implementations of the Database interface.
+// Package test implements a generic test for all implementations of the
+// Database interface.
 // Test your implementation by passing an empty database to the
 // GenericDatabaseTest() function
 package test // import "polycry.pt/poly-go/sortedkv/test"

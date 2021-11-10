@@ -12,6 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package big contains generic functions that operate on big.Int and can
-// be used independently of go-perun.
+// Package big contains helpers for package math/big.
 package big // import "polycry.pt/poly-go/math/big"

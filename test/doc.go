@@ -12,5 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package test contains Perun independent testing functionality.
+// Package test contains testing utilities.
 package test // import "polycry.pt/poly-go/test"

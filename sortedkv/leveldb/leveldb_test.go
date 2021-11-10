@@ -48,7 +48,7 @@ func TestIterator(t *testing.T) {
 
 func runTestOnTempDatabase(t *testing.T, tester func(*Database)) {
 	// Create a temporary directory and delete it when done
-	path, err := ioutil.TempDir("", "perun_testdb_")
+	path, err := ioutil.TempDir("", "poly_testdb_")
 	require.Nil(t, err, "Could not create temporary directory for database")
 	defer func() { require.Nil(t, os.RemoveAll(path)) }()
 

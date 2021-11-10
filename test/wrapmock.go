@@ -61,8 +61,8 @@ func (w *WrapMock) AssertWrapped() {
 	frames := runtime.CallersFrames(pc)
 	methodFrame, _ := frames.Next()
 	packageFrame, _ := frames.Next()
-	// Frame.Function has the form "perun.network/path/to/pkg.(*Type).fn" for
-	// method "fn" on object "Type" and the form "perun.network/path/to/pkg.fn"
+	// Frame.Function has the form "polycry.pt/path/to/pkg.(*Type).fn" for
+	// method "fn" on object "Type" and the form "polycry.pt/path/to/pkg.fn"
 	// for package functions
 	methodFn := splitDotLast(methodFrame.Function)
 	packageFn := splitDotLast(packageFrame.Function)

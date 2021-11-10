@@ -47,7 +47,7 @@ func Encode(writer io.Writer, values ...interface{}) (err error) {
 			if enc, ok := value.(Encoder); ok {
 				err = enc.Encode(writer)
 			} else {
-				panic(fmt.Sprintf("perunio.Encode(): Invalid type %T", v))
+				panic(fmt.Sprintf("polyio.Encode(): Invalid type %T", v))
 			}
 		}
 
@@ -85,7 +85,7 @@ func Decode(reader io.Reader, values ...interface{}) (err error) {
 			if dec, ok := value.(Decoder); ok {
 				err = dec.Decode(reader)
 			} else {
-				panic(fmt.Sprintf("perunio.Decode(): Invalid type %T", v))
+				panic(fmt.Sprintf("polyio.Decode(): Invalid type %T", v))
 			}
 		}
 
