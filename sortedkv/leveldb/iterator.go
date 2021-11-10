@@ -18,7 +18,6 @@ import (
 	"sync"
 
 	"github.com/syndtr/goleveldb/leveldb/iterator"
-	"perun.network/go-perun/log"
 )
 
 // Iterator provides an iterator over a key range.
@@ -46,7 +45,7 @@ func (i *Iterator) Key() string {
 	defer i.mu.Unlock()
 
 	if i.Iterator == nil || !i.Iterator.Valid() {
-		log.Panic("Iterator.Key() called on invalid iterator")
+		panic("Iterator.Key() called on invalid iterator")
 	}
 
 	return string(i.Iterator.Key())
@@ -58,7 +57,7 @@ func (i *Iterator) Value() string {
 	defer i.mu.Unlock()
 
 	if i.Iterator == nil || !i.Iterator.Valid() {
-		log.Panic("Iterator.Value() called on invalid iterator")
+		panic("Iterator.Value() called on invalid iterator")
 	}
 
 	return string(i.Iterator.Value())

@@ -14,8 +14,6 @@
 
 package memorydb
 
-import "perun.network/go-perun/log"
-
 // Iterator provides an iterator over a key range.
 type Iterator struct {
 	next   int
@@ -32,7 +30,7 @@ func (i *Iterator) Next() bool {
 // Key returns the key of the current element.
 func (i *Iterator) Key() string {
 	if i.next == 0 {
-		log.Panic("Iterator.Key() accessed before Next() or after Close().")
+		panic("Iterator.Key() accessed before Next() or after Close().")
 	}
 
 	if i.next > len(i.keys) {
@@ -44,7 +42,7 @@ func (i *Iterator) Key() string {
 // Value returns the value of the current element.
 func (i *Iterator) Value() string {
 	if i.next == 0 {
-		log.Panic("Iterator.Value() accessed before Next() or after Close().")
+		panic("Iterator.Value() accessed before Next() or after Close().")
 	}
 
 	if i.next > len(i.keys) {
