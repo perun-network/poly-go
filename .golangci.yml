@@ -1,0 +1,95 @@
+run:
+  timeout: 2m
+
+  # Do not change go.{mod,sum}.
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - bodyclose
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - exportloopref
+    - funlen
+    # We use init() functions.
+    #- gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    # This is stupid since it reports every constant as magic-number.
+    #- gomnd
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    # This thing reports long lines, but we have a lot of them…
+    #- lll
+    - misspell
+    # We often just have a 'return' when using named returns.
+    #- nakedret
+    - nolintlint
+    - rowserrcheck
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+    - asciicheck
+    # We often use globals for backend stuff
+    #- gochecknoglobals
+    - gocognit
+    - godot
+    # Reports TODO/BUG/FIXME
+    #- godox
+    # Keeps reporting 'do not define dynamic errors, use wrapped static errors instead'.
+    #- goerr113
+    # We don't care about alignment right now.
+    #- maligned
+    - nestif
+    - prealloc
+    # This always reports that tests should be Black Box.
+    #- testpackage
+    #- wsl
+
+issues:
+  exclude-rules:
+    - path: test
+      linters:
+        # 'Error return value … not checked'
+        - errcheck 
+        - funlen
+        # Tests do not need to prealloc everything.
+        - prealloc
+    # `Id` instead of `ID` is fine in tests.
+    - path: test
+      text: " should be "
+      linters:
+        - golint
+        - stylecheck
+    # Allow nil contexts in tests.
+    - path: test
+      text: "SA1012"
+      linters:
+        - staticcheck
+    # Allow unchecked errors in tests.
+    - path: test
+      text: "G104"
+      linters:
+        - gosec
+
+    # Exclude lll issues for long lines with go:generate.
+    - linters:
+        - lll
+      source: "^//go:generate "
+
+  exclude-use-default: false
