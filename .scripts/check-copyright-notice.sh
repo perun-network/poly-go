@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# SPDX-License-Identifier: Apache-2.0
+
 cn="$(dirname $(readlink -f $0))/copyright-notice"
 n=$(wc -l $cn | cut -d ' ' -f 1)
 
