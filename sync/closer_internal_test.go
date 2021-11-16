@@ -31,6 +31,7 @@ func TestCloser_Close(t *testing.T) {
 	t.Parallel()
 
 	t.Run("error return check", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 
 		assert.NoError(t, c.Close())
@@ -41,6 +42,7 @@ func TestCloser_Close(t *testing.T) {
 	})
 
 	t.Run("handler execute check", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 		const N = 100
 		var called int32
@@ -63,6 +65,7 @@ func TestCloser_OnCloseAlways(t *testing.T) {
 	t.Parallel()
 
 	t.Run("before closing", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 		var executed polyatomic.Bool
 
@@ -74,6 +77,7 @@ func TestCloser_OnCloseAlways(t *testing.T) {
 	})
 
 	t.Run("after closing", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 		var executed polyatomic.Bool
 
@@ -89,6 +93,7 @@ func TestCloser_OnClose(t *testing.T) {
 	t.Parallel()
 
 	t.Run("before closing", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 		var executed polyatomic.Bool
 
@@ -100,6 +105,7 @@ func TestCloser_OnClose(t *testing.T) {
 	})
 
 	t.Run("after closing", func(t *testing.T) {
+		t.Parallel()
 		var c Closer
 		var executed polyatomic.Bool
 

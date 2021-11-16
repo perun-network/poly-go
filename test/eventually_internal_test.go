@@ -10,6 +10,7 @@ import (
 )
 
 func TestEventually(t *testing.T) {
+	t.Parallel()
 	// default parameters for this test
 	within, pause := 40*time.Millisecond, 10*time.Millisecond
 	numTries := (int)(within/pause) + 1

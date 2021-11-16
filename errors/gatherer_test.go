@@ -51,6 +51,7 @@ func TestGatherer_Go_and_Wait(t *testing.T) {
 }
 
 func TestGatherer_Go_and_DoneOrFailed(t *testing.T) {
+	t.Parallel()
 	const timeout = 100 * time.Millisecond
 
 	t.Run("success", func(t *testing.T) {
