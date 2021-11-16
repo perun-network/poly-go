@@ -27,14 +27,12 @@ func TestStutter(t *testing.T) {
 	go func() {
 		for _, v := range values {
 			_, err := w.Write([]byte{v})
-			if err != nil {
-				panic(err)
-			}
+			assert.NoError(t, err)
 		}
 	}()
 
 	var decodedValue polyio.ByteSlice = make([]byte, len(values))
-	assert.Nil(t, decodedValue.Decode(r))
+	assert.NoError(t, decodedValue.Decode(r))
 	for i, v := range values {
 		assert.Equal(t, decodedValue[i], v)
 	}

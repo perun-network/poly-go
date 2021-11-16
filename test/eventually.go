@@ -91,11 +91,20 @@ func Eventually(t T, test func(T), within, pause time.Duration) {
 	NewEventually(within, pause).Eventually(t, test)
 }
 
+const (
+	within100msTimeout = 100 * time.Millisecond
+	within100msPause   = 5 * time.Millisecond
+	within1sTimeout    = 1 * time.Second
+	within1sPause      = 20 * time.Millisecond
+	within10sTimeout   = 10 * time.Second
+	within10sPause     = 200 * time.Millisecond
+)
+
 // Within100ms is an EventuallyTest that runs the test every 5ms up to 100ms.
-var Within100ms = NewEventually(100*time.Millisecond, 5*time.Millisecond)
+var Within100ms = NewEventually(within100msTimeout, within100msPause)
 
 // Within1s is an EventuallyTest that runs the test every 20ms up to 1s.
-var Within1s = NewEventually(time.Second, 20*time.Millisecond)
+var Within1s = NewEventually(within1sTimeout, within1sPause)
 
 // Within10s is an EventuallyTest that runs the test every 200ms up to 10s.
-var Within10s = NewEventually(10*time.Second, 200*time.Millisecond)
+var Within10s = NewEventually(within10sTimeout, within10sPause)

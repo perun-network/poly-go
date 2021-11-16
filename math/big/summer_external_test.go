@@ -67,8 +67,8 @@ func TestAddSums(t *testing.T) {
 	assert.Nil(t, sum)
 }
 
-func randomSummer(len int, rng *rand.Rand) *polybig.Sum {
-	data := make([]*big.Int, len)
+func randomSummer(l int, rng *rand.Rand) *polybig.Sum {
+	data := make([]*big.Int, l)
 	for i := range data {
 		d, err := crand.Int(rng, new(big.Int).Lsh(big.NewInt(1), 255))
 		if err != nil {

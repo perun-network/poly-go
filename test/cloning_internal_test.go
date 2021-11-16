@@ -353,7 +353,7 @@ func Test_checkClone(t *testing.T) {
 
 		err = checkClone(x, c)
 		if err != nil {
-			println(err.Error())
+			t.Log(err.Error())
 		}
 		if test.ExpectProperClone && err != nil {
 			t.Errorf("Expected checkClone(%T) to return nil, got error '%v'", x, err)
@@ -495,7 +495,7 @@ func Test_checkCloneManually(t *testing.T) {
 	for _, test := range tests {
 		err := checkClone(test.Original, test.Clone)
 		if err != nil {
-			println(err.Error())
+			t.Log(err.Error())
 		}
 		if test.IsProperClone && err != nil {
 			t.Errorf(
