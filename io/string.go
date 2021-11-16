@@ -38,8 +38,7 @@ func decodeString(r io.Reader, s *string) error {
 	}
 
 	buf := make([]byte, l)
-	_, err := io.ReadFull(r, buf)
-	if err != nil {
+	if _, err := io.ReadFull(r, buf); err != nil {
 		return errors.Wrap(err, "failed to read string")
 	}
 	*s = string(buf)
