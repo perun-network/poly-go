@@ -29,6 +29,7 @@ type (
 
 // NewWrapMock creates a new mock for wrapped objects.
 func NewWrapMock(t *testing.T) WrapMock {
+	t.Helper()
 	return WrapMock{t: t}
 }
 

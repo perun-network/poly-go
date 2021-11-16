@@ -15,6 +15,7 @@ import (
 
 // GenericDatabaseTest provides generic sortedkv tests.
 func GenericDatabaseTest(t *testing.T, database sortedkv.Database) {
+	t.Helper()
 	test := DatabaseTest{T: t}
 	t.Run("Generic database test", func(t *testing.T) {
 		test.Database = database

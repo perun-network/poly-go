@@ -41,6 +41,7 @@ func TestStutter(t *testing.T) {
 }
 
 func testByteSlices(t *testing.T, serial ...polyio.ByteSlice) {
+	t.Helper()
 	a := assert.New(t)
 	r, w := io.Pipe()
 	done := make(chan struct{})

@@ -30,6 +30,7 @@ import (
 // channels, maps, and unsafe pointers) and will immediately panic when seeing
 // these types.
 func VerifyClone(t *testing.T, x interface{}) {
+	t.Helper()
 	if !isCloneable(reflect.TypeOf(x)) {
 		t.Errorf("Expected cloneable input, got %v (type %T)", x, x)
 	}

@@ -11,6 +11,7 @@ import (
 
 // GenericTableTest provides generic tests for table implementations.
 func GenericTableTest(t *testing.T, database sortedkv.Database) {
+	t.Helper()
 	dbtest := DatabaseTest{
 		T:        t,
 		Database: database,

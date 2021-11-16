@@ -16,6 +16,7 @@ type IteratorTest struct {
 
 // GenericIteratorTest provides generic tests for iterator implementations.
 func GenericIteratorTest(t *testing.T, database sortedkv.Database) {
+	t.Helper()
 	dbtest := DatabaseTest{T: t, Database: database}
 	dbtest.Put("2b", "2bv")
 	dbtest.Put("3", "3v")
