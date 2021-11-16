@@ -8,8 +8,7 @@ import (
 	"testing"
 )
 
-type Cloneable struct {
-}
+type Cloneable struct{}
 
 func (Cloneable) Clone() Cloneable {
 	return Cloneable{}
@@ -25,8 +24,7 @@ func (c *CloneableRef) Clone() *CloneableRef {
 	return &CloneableRef{c.identity}
 }
 
-type BrokenCloneableRef struct {
-}
+type BrokenCloneableRef struct{}
 
 func (b *BrokenCloneableRef) Clone() *BrokenCloneableRef {
 	return b
@@ -40,32 +38,27 @@ func (BrokenCloneablePtr) Clone() BrokenCloneablePtr {
 	return BrokenCloneablePtr{}
 }
 
-type NotCloneable struct {
-}
+type NotCloneable struct{}
 
-type NotCloneableNumArgsIn struct {
-}
+type NotCloneableNumArgsIn struct{}
 
 func (NotCloneableNumArgsIn) Clone(NotCloneableNumArgsIn) NotCloneableNumArgsIn {
 	return NotCloneableNumArgsIn{}
 }
 
-type NotCloneableNumArgsOut struct {
-}
+type NotCloneableNumArgsOut struct{}
 
 func (NotCloneableNumArgsOut) Clone() (NotCloneableNumArgsOut, NotCloneableNumArgsOut) {
 	return NotCloneableNumArgsOut{}, NotCloneableNumArgsOut{}
 }
 
-type NotCloneableInt struct {
-}
+type NotCloneableInt struct{}
 
 func (NotCloneableInt) Clone() int {
 	return 0
 }
 
-type NotCloneableIntRef struct {
-}
+type NotCloneableIntRef struct{}
 
 func (*NotCloneableIntRef) Clone() int {
 	return 1
@@ -194,7 +187,8 @@ type BrokenCloneableNestedArray struct {
 
 func (b BrokenCloneableNestedArray) Clone() BrokenCloneableNestedArray {
 	return BrokenCloneableNestedArray{
-		[1]BrokenCloneableNestedInner{b.inner[0].Clone()}}
+		[1]BrokenCloneableNestedInner{b.inner[0].Clone()},
+	}
 }
 
 // These structs test if `checkClone` detects improperly cloned field with
@@ -327,9 +321,12 @@ func Test_checkClone(t *testing.T) {
 		{&BrokenCloneableRef{}, false},
 		{BrokenCloneablePtr{new(int)}, false},
 		{BrokenCloneableNested{BrokenCloneableNestedInner{new(int)}}, false},
-		{BrokenCloneableNestedArray{
-			[1]BrokenCloneableNestedInner{{new(int)}}},
-			false},
+		{
+			BrokenCloneableNestedArray{
+				[1]BrokenCloneableNestedInner{{new(int)}},
+			},
+			false,
+		},
 		{RecursivelyCloneable{}, true},
 		{BrokenShallowClonePtr{&CloneableRef{1}}, false},
 		{BrokenShallowCloneSlice{[]int{1, 2, 3}}, false},
@@ -448,7 +445,8 @@ func Test_checkCloneManually(t *testing.T) {
 
 	ss := SelfContained{[]SelfContained{
 		{[]SelfContained{}, nil},
-		{[]SelfContained{}, nil}}, nil}
+		{[]SelfContained{}, nil},
+	}, nil}
 
 	arr0 := HasArray{}
 	arr0.ys[0] = big.NewFloat(0)

@@ -13,11 +13,11 @@
 package memorydb // import "polycry.pt/poly-go/sortedkv/memorydb"
 
 import (
-	"polycry.pt/poly-go/sortedkv"
-
 	"sort"
 	"strings"
 	"sync"
+
+	"polycry.pt/poly-go/sortedkv"
 )
 
 // Database implements the Database interface and stores the values in memory.

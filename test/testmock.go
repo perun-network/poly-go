@@ -10,7 +10,6 @@ type (
 	T interface {
 		Errorf(string, ...interface{})
 		FailNow()
-
 		Helper()
 	}
 

@@ -51,7 +51,7 @@ func TestBigInt_Invalid(t *testing.T) {
 	// Test integers that are too big
 	tooBigBitPos := []uint{polyio.MaxBigIntLength*8 + 1, 0xff*8 + 1} // too big uint8 and uint16 lengths
 	for _, pos := range tooBigBitPos {
-		var tooBig = polyio.BigInt{big.NewInt(1)}
+		tooBig := polyio.BigInt{big.NewInt(1)}
 		tooBig.Lsh(tooBig.Int, pos)
 
 		a.Error(tooBig.Encode(buf), "encoding too big big.Int should fail")

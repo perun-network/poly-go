@@ -21,7 +21,7 @@ func TestByteSlice(t *testing.T) {
 
 // TestStutter tests what happens if the network stutters (split one message into several network packages).
 func TestStutter(t *testing.T) {
-	var values = []byte{0, 1, 2, 3, 4, 5, 6, 255}
+	values := []byte{0, 1, 2, 3, 4, 5, 6, 255}
 	r, w := io.Pipe()
 
 	go func() {
