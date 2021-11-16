@@ -68,7 +68,7 @@ func (et *EventuallyTest) test(assertion func(T)) (success bool) {
 	success = false
 	defer func() {
 		if !success && e.called {
-			recover()
+			_ = recover()
 		}
 	}()
 

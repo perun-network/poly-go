@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	polytest "polycry.pt/poly-go/test"
 )
 
@@ -49,7 +50,8 @@ func TestEncodeDecodeString(t *testing.T) {
 
 	t.Run("short stream", func(t *testing.T) {
 		var buf bytes.Buffer
-		binary.Write(&buf, byteOrder, uint16(16))
+		err := binary.Write(&buf, byteOrder, uint16(16))
+		require.NoError(t, err)
 		buf.Write(make([]byte, 8)) // 8 bytes missing
 
 		var d string

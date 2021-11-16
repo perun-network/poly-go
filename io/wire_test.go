@@ -30,15 +30,15 @@ func TestWrongTypes(t *testing.T) {
 	for _i, _v := range values {
 		v := _v
 		i := _i
-		panics, _ := polytest.CheckPanic(func() { Encode(w, v) })
+		panics, _ := polytest.CheckPanic(func() { _ = Encode(w, v) })
 		assert.True(t, panics, "Encode() must panic on invalid type %T", v)
 
 		d[i] = reflect.New(reflect.TypeOf(v)).Interface()
-		panics, _ = polytest.CheckPanic(func() { Decode(r, d[i]) })
+		panics, _ = polytest.CheckPanic(func() { _ = Decode(r, d[i]) })
 		assert.True(t, panics, "Decode() must panic on invalid type %T", v)
 	}
 
-	polytest.CheckPanic(func() { Decode(r, d...) })
+	polytest.CheckPanic(func() { _ = Decode(r, d...) })
 }
 
 func TestEncodeDecode(t *testing.T) {

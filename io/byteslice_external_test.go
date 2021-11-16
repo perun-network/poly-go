@@ -26,7 +26,10 @@ func TestStutter(t *testing.T) {
 
 	go func() {
 		for _, v := range values {
-			w.Write([]byte{v})
+			_, err := w.Write([]byte{v})
+			if err != nil {
+				panic(err)
+			}
 		}
 	}()
 
