@@ -64,7 +64,7 @@ func (d *Database) Get(key string) (string, error) {
 
 	value, exists := d.data[key]
 	if !exists {
-		return "", &sortedkv.ErrNotFound{Key: key}
+		return "", &sortedkv.NotFoundError{Key: key}
 	}
 	return value, nil
 }
@@ -97,7 +97,7 @@ func (d *Database) Delete(key string) error {
 	defer d.mutex.Unlock()
 
 	if _, has := d.data[key]; !has {
-		return &sortedkv.ErrNotFound{Key: key}
+		return &sortedkv.NotFoundError{Key: key}
 	}
 	delete(d.data, key)
 	return nil

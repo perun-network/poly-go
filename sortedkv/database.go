@@ -10,13 +10,13 @@ package sortedkv // import "polycry.pt/poly-go/sortedkv"
 
 import "io"
 
-// ErrNotFound is returned whenever a key is not in the db.
-type ErrNotFound struct {
+// NotFoundError is returned whenever a key is not in the db.
+type NotFoundError struct {
 	Key string
 }
 
 // Error returns the error string.
-func (e *ErrNotFound) Error() string {
+func (e *NotFoundError) Error() string {
 	return "sortedkv: key not found: " + e.Key
 }
 
