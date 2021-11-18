@@ -9,6 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	ctxtest "polycry.pt/poly-go/context/test"
 	polyio "polycry.pt/poly-go/io"
 	iotest "polycry.pt/poly-go/io/test"
 )
@@ -32,7 +33,9 @@ func TestStutter(t *testing.T) {
 	}()
 
 	var decodedValue polyio.ByteSlice = make([]byte, len(values))
-	assert.NoError(t, decodedValue.Decode(r))
+	ctxtest.AssertTerminatesQuickly(t, func() {
+		assert.NoError(t, decodedValue.Decode(r))
+	})
 	for i, v := range values {
 		assert.Equal(t, decodedValue[i], v)
 	}
