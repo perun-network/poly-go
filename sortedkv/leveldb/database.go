@@ -21,7 +21,6 @@ type Database struct {
 // LoadDatabase creates a new, empty Database.
 func LoadDatabase(path string) (*Database, error) {
 	db, err := leveldb.OpenFile(path, nil)
-
 	if err != nil {
 		return nil, errors.Wrap(err, "Database.LoadDatabase(path) could not open/create file")
 	}
@@ -71,7 +70,6 @@ func (d *Database) PutBytes(key string, value []byte) error {
 // If the key is not present, an error is returned.
 func (d *Database) Delete(key string) error {
 	has, err := d.DB.Has([]byte(key), nil)
-
 	if err != nil {
 		return errors.Wrap(err, "Database.Delete(key) error")
 	}

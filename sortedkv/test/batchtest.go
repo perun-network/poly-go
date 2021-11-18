@@ -10,6 +10,7 @@ import (
 
 // GenericBatchTest is to be called from the batch implementation tests.
 func GenericBatchTest(t *testing.T, database sortedkv.Database) {
+	t.Helper()
 	this := BatchTest{T: t, Batch: database.NewBatch()}
 
 	dbtest := DatabaseTest{T: t, Database: database}

@@ -17,6 +17,15 @@ type (
 	Sum []*big.Int
 )
 
+// ErrDimensionMismatch indicates that the dimensions of summers did not match.
+var ErrDimensionMismatch = errors.New("dimension mismatch")
+
+// IsErrDimensionMismatch returns whether an error is an ErrDimensionMismatch
+// error.
+func IsErrDimensionMismatch(err error) bool {
+	return errors.Is(err, ErrDimensionMismatch)
+}
+
 // Sum returns the receiver casted into []*big.Int.
 func (s Sum) Sum() []*big.Int {
 	return s
@@ -39,7 +48,7 @@ func AddSums(ss ...Summer) (Sum, error) {
 		s := ss[i].Sum()
 
 		if len(s) != len(sum) {
-			return nil, errors.New("dimension mismatch")
+			return nil, ErrDimensionMismatch
 		}
 		for j := range s {
 			sum[j].Add(sum[j], s[j])
@@ -53,7 +62,7 @@ func EqualSum(b0, b1 Summer) (bool, error) {
 	s0, s1 := b0.Sum(), b1.Sum()
 	n := len(s0)
 	if n != len(s1) {
-		return false, errors.New("dimension mismatch")
+		return false, ErrDimensionMismatch
 	}
 
 	for i := 0; i < n; i++ {

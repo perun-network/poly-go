@@ -29,6 +29,7 @@ type (
 
 // NewWrapMock creates a new mock for wrapped objects.
 func NewWrapMock(t *testing.T) WrapMock {
+	t.Helper()
 	return WrapMock{t: t}
 }
 
@@ -42,9 +43,10 @@ func NewWrapMock(t *testing.T) WrapMock {
 func (w *WrapMock) AssertWrapped() {
 	w.called = true
 	// record two next outer frames
-	pc := make([]uintptr, 2)
+	const skipFrames = 2
+	pc := make([]uintptr, skipFrames)
 	// skip inner two frames "AssertWrapped", and "runtime.Callers"
-	runtime.Callers(2, pc)
+	runtime.Callers(skipFrames, pc)
 
 	frames := runtime.CallersFrames(pc)
 	methodFrame, _ := frames.Next()

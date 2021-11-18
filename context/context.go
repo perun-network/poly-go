@@ -13,8 +13,7 @@ import (
 // was cancelled or whose deadline exceeded. Prior to checking, the error is
 // unwrapped by calling errors.Cause.
 func IsContextError(err error) bool {
-	err = errors.Cause(err)
-	return err == context.Canceled || err == context.DeadlineExceeded
+	return errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded)
 }
 
 // IsDone returns whether ctx is done.

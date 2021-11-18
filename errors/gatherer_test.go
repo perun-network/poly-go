@@ -44,13 +44,14 @@ func TestGatherer_Go_and_Wait(t *testing.T) {
 		return stderrors.New("")
 	})
 
-	test.AssertNotTerminates(t, timeout/2, func() { g.Wait() })
+	test.AssertNotTerminates(t, timeout/2, func() { _ = g.Wait() })
 	var err error
 	test.AssertTerminates(t, timeout, func() { err = g.Wait() })
 	require.Error(t, err)
 }
 
 func TestGatherer_Go_and_DoneOrFailed(t *testing.T) {
+	t.Parallel()
 	const timeout = 100 * time.Millisecond
 
 	t.Run("success", func(t *testing.T) {

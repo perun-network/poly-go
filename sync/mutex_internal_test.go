@@ -50,8 +50,8 @@ func TestMutex_TryLockCtx_Nil(t *testing.T) {
 
 	var m Mutex
 	// Try instant lock without context.
-	assert.True(t, m.TryLockCtx(nil), "TryLock() on new mutex must succeed")
-	assert.False(t, m.TryLockCtx(nil), "TryLock() on locked mutex must fail")
+	assert.True(t, m.TryLockCtx(nil), "TryLock() on new mutex must succeed")  // nolint: staticcheck
+	assert.False(t, m.TryLockCtx(nil), "TryLock() on locked mutex must fail") // nolint: staticcheck
 	assert.NotPanics(t, func() { m.Unlock() }, "Unlock must succeed")
 }
 

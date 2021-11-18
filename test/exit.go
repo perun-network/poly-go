@@ -79,7 +79,7 @@ func (e *Exit) assert(check func(*exiter), fn func()) {
 	defer func() {
 		// check that this panic came from the exiter and let it bubble up the stack o/w
 		if panicked && ex.called {
-			recover()
+			_ = recover()
 		}
 	}()
 

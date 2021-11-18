@@ -39,7 +39,7 @@ func TestSummer(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		a, b := randomSummer(i, rng), randomSummer(i+1, rng)
 		equal, err := polybig.EqualSum(a, b)
-		require.EqualError(t, err, "dimension mismatch")
+		require.True(t, polybig.IsErrDimensionMismatch(err))
 		assert.False(t, equal)
 	}
 }
@@ -58,7 +58,7 @@ func TestAddSums(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		a, b := randomSummer(i, rng), randomSummer(i+1, rng)
 		_, err := polybig.AddSums(a, b)
-		require.EqualError(t, err, "dimension mismatch")
+		require.True(t, polybig.IsErrDimensionMismatch(err))
 	}
 
 	// No input must return nil, nil.
@@ -67,8 +67,8 @@ func TestAddSums(t *testing.T) {
 	assert.Nil(t, sum)
 }
 
-func randomSummer(len int, rng *rand.Rand) *polybig.Sum {
-	data := make([]*big.Int, len)
+func randomSummer(l int, rng *rand.Rand) *polybig.Sum {
+	data := make([]*big.Int, l)
 	for i := range data {
 		d, err := crand.Int(rng, new(big.Int).Lsh(big.NewInt(1), 255))
 		if err != nil {

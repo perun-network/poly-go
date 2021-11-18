@@ -23,7 +23,7 @@ func NewGatherer() *Gatherer {
 // NewGatherer() to create error gatherers.
 type Gatherer struct {
 	mutex sync.Mutex
-	errs  accumulatedError
+	errs  accumulatedErrors
 	wg    polysync.WaitGroup
 
 	onFails []func()
@@ -120,10 +120,10 @@ type stackTracer interface {
 	StackTrace() errors.StackTrace
 }
 
-type accumulatedError []error
+type accumulatedErrors []error
 
 // Error returns an error message containing all the sub-errors that occurred.
-func (e accumulatedError) Error() string {
+func (e accumulatedErrors) Error() string {
 	var builder strings.Builder
 	builder.WriteString(fmt.Sprintf("(%d error", len(e)))
 	if len(e) != 1 {
@@ -137,7 +137,7 @@ func (e accumulatedError) Error() string {
 }
 
 // StackTrace returns the first available stack trace, or none.
-func (e accumulatedError) StackTrace() errors.StackTrace {
+func (e accumulatedErrors) StackTrace() errors.StackTrace {
 	for _, err := range e {
 		if s, ok := err.(stackTracer); ok {
 			return s.StackTrace()
@@ -155,7 +155,7 @@ func Causes(err error) []error {
 	}
 
 	cerr := errors.Cause(err)
-	if acc, ok := cerr.(accumulatedError); ok {
+	if acc, ok := cerr.(accumulatedErrors); ok {
 		return acc
 	}
 	return []error{err}

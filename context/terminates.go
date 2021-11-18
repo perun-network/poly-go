@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+// TerminatesQuicklyTimeout is the timeout that TerminatesQuickly uses.
+var TerminatesQuicklyTimeout = 20 * time.Millisecond
+
 // TerminatesCtx checks whether a function terminates before a context is done.
 func TerminatesCtx(ctx context.Context, fn func()) bool {
 	select {
@@ -38,5 +41,5 @@ func Terminates(timeout time.Duration, fn func()) bool {
 
 // TerminatesQuickly checks whether a function terminates within 20 ms.
 func TerminatesQuickly(fn func()) bool {
-	return Terminates(time.Millisecond*20, fn)
+	return Terminates(TerminatesQuicklyTimeout, fn)
 }

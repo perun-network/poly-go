@@ -15,7 +15,7 @@ func CheckPanic(function func()) (didPanic bool, value interface{}) {
 		}
 	}()
 	// Set up for the panic case.
-	didPanic = true
+	didPanic = true // nolint: wastedassign
 	// Call the function to be checked.
 	function()
 	// This is only executed if panic() was not called.

@@ -21,12 +21,12 @@ type BigInt struct {
 // Decode reads a big.Int from the given stream.
 func (b *BigInt) Decode(reader io.Reader) error {
 	// Read length
-	var lengthData = make([]byte, 1)
+	lengthData := make([]byte, 1)
 	if _, err := reader.Read(lengthData); err != nil {
 		return errors.Wrap(err, "failed to decode length of big.Int")
 	}
 
-	var length = lengthData[0]
+	length := lengthData[0]
 	if length > MaxBigIntLength {
 		return errors.New("big.Int too big to decode")
 	}

@@ -13,18 +13,22 @@ import (
 	"time"
 )
 
-const envTestSeed = "GOTESTSEED"
+const (
+	envTestSeed          = "GOTESTSEED"
+	genRootSeedPrintBase = 10
+	genRootSeedPrintLen  = 64
+)
 
 var rootSeed int64
 
 func init() {
 	rootSeed = genRootSeed()
-	fmt.Printf("pkg/test: using rootSeed %d\n", rootSeed)
+	fmt.Printf("pkg/test: using rootSeed %d\n", rootSeed) // nolint: forbidigo
 }
 
 func genRootSeed() (rootSeed int64) {
 	if val, ok := os.LookupEnv(envTestSeed); ok {
-		rootSeed, err := strconv.ParseInt(val, 10, 64)
+		rootSeed, err := strconv.ParseInt(val, genRootSeedPrintBase, genRootSeedPrintLen)
 		if err != nil {
 			panic(fmt.Sprintf("Could not parse %s = '%s' as int64", envTestSeed, val))
 		}

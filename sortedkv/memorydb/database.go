@@ -13,11 +13,11 @@
 package memorydb // import "polycry.pt/poly-go/sortedkv/memorydb"
 
 import (
-	"polycry.pt/poly-go/sortedkv"
-
 	"sort"
 	"strings"
 	"sync"
+
+	"polycry.pt/poly-go/sortedkv"
 )
 
 // Database implements the Database interface and stores the values in memory.
@@ -64,7 +64,7 @@ func (d *Database) Get(key string) (string, error) {
 
 	value, exists := d.data[key]
 	if !exists {
-		return "", &sortedkv.ErrNotFound{Key: key}
+		return "", &sortedkv.NotFoundError{Key: key}
 	}
 	return value, nil
 }
@@ -97,7 +97,7 @@ func (d *Database) Delete(key string) error {
 	defer d.mutex.Unlock()
 
 	if _, has := d.data[key]; !has {
-		return &sortedkv.ErrNotFound{Key: key}
+		return &sortedkv.NotFoundError{Key: key}
 	}
 	delete(d.data, key)
 	return nil

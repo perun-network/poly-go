@@ -12,8 +12,10 @@ type Skipper interface {
 	SkipNow()
 }
 
-var executedTests = make(map[string]struct{})
-var executedTestsMutex sync.Mutex
+var (
+	executedTests      = make(map[string]struct{})
+	executedTestsMutex sync.Mutex
+)
 
 // OnlyOnce records a test case and skips it if it already executed once.
 // Test case identification is done by observing the stack. Calls SkipNow() on

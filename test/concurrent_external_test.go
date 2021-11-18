@@ -45,7 +45,7 @@ func TestConcurrentT_Wait(t *testing.T) {
 			test.AssertFatal(t, func(t test.T) {
 				ctx, cancel := context.WithCancel(context.Background())
 				cancel()
-				test.NewConcurrentCtx(t, ctx).Stage("", func(test.ConcT) {
+				test.NewConcurrentCtx(ctx, t).Stage("", func(test.ConcT) {
 					time.Sleep(timeout)
 				})
 			})

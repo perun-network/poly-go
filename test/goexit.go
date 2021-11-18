@@ -80,7 +80,9 @@ func CheckAbortCtx(ctx context.Context, function func()) (abort Abort, ok bool) 
 					} else {
 						// Hide all mentions of CheckAbort and its inner
 						// functions as well as panic and Goexit.
-						base.stack = getStack(false, 2, 3)
+						const hidenInnerStackDepth = 2
+						const hidenOuterStackDepth = 3
+						base.stack = getStack(false, hidenInnerStackDepth, hidenOuterStackDepth)
 					}
 				}
 			}()
@@ -126,7 +128,8 @@ func getStack(hideGoroutine bool, hideInnerCallers, hideOuterCallers int) string
 	goroutine, stack := removeLine(string(debug.Stack()))
 
 	// getStack() + debug.Stack() + hideInnerCallers.
-	removeInnerFunctions := 2 + hideInnerCallers
+	const skipCallers = 2
+	removeInnerFunctions := skipCallers + hideInnerCallers
 	for i := 0; i < 2*removeInnerFunctions; i++ {
 		_, stack = removeLine(stack)
 	}

@@ -20,6 +20,7 @@ func TestOnlyOnce2(t *testing.T) {
 }
 
 func testOnlyOnce(t *testing.T) {
+	t.Helper()
 	OnlyOnce(t)
 	assert.Equal(t, int32(1), atomic.AddInt32(&onlyOnceTestCalls, 1))
 }

@@ -16,6 +16,7 @@ import (
 // GenericSerializerTest runs multiple tests to check whether encoding
 // and decoding of serializer values works.
 func GenericSerializerTest(t *testing.T, serializers ...polyio.Serializer) {
+	t.Helper()
 	genericDecodeEncodeTest(t, serializers...)
 	GenericBrokenPipeTest(t, serializers...)
 }
@@ -23,6 +24,7 @@ func GenericSerializerTest(t *testing.T, serializers ...polyio.Serializer) {
 // genericDecodeEncodeTest tests whether encoding and then decoding
 // serializer values results in the original values.
 func genericDecodeEncodeTest(t *testing.T, serializers ...polyio.Serializer) {
+	t.Helper()
 	for i, v := range serializers {
 		r, w := io.Pipe()
 		br := iotest.OneByteReader(r)
@@ -47,6 +49,7 @@ func genericDecodeEncodeTest(t *testing.T, serializers ...polyio.Serializer) {
 
 // GenericBrokenPipeTest tests that encoding and decoding on broken streams fails.
 func GenericBrokenPipeTest(t *testing.T, serializers ...polyio.Serializer) {
+	t.Helper()
 	for i, v := range serializers {
 		r, w := io.Pipe()
 		_ = w.Close()

@@ -41,7 +41,7 @@ func TestBigInt_DecodeToExisting(t *testing.T) {
 
 func TestBigInt_Negative(t *testing.T) {
 	neg, buf := polyio.BigInt{big.NewInt(-1)}, new(bytes.Buffer)
-	assert.Panics(t, func() { neg.Encode(buf) }, "encoding negative big.Int should panic")
+	assert.Panics(t, func() { _ = neg.Encode(buf) }, "encoding negative big.Int should panic")
 	assert.Zero(t, buf.Len(), "encoding negative big.Int should not write anything")
 }
 
@@ -51,7 +51,7 @@ func TestBigInt_Invalid(t *testing.T) {
 	// Test integers that are too big
 	tooBigBitPos := []uint{polyio.MaxBigIntLength*8 + 1, 0xff*8 + 1} // too big uint8 and uint16 lengths
 	for _, pos := range tooBigBitPos {
-		var tooBig = polyio.BigInt{big.NewInt(1)}
+		tooBig := polyio.BigInt{big.NewInt(1)}
 		tooBig.Lsh(tooBig.Int, pos)
 
 		a.Error(tooBig.Encode(buf), "encoding too big big.Int should fail")
@@ -73,5 +73,5 @@ func TestBigInt_Invalid(t *testing.T) {
 	buf.WriteByte(1)
 	a.Error(result.Decode(buf), "decoding after sender only sent length should fail")
 
-	a.Panics(func() { polyio.BigInt{nil}.Encode(buf) }, "encoding nil big.Int failed to panic")
+	a.Panics(func() { _ = polyio.BigInt{nil}.Encode(buf) }, "encoding nil big.Int failed to panic")
 }

@@ -9,6 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	ctxtest "polycry.pt/poly-go/context/test"
 	polyio "polycry.pt/poly-go/io"
 	iotest "polycry.pt/poly-go/io/test"
 )
@@ -21,23 +22,27 @@ func TestByteSlice(t *testing.T) {
 
 // TestStutter tests what happens if the network stutters (split one message into several network packages).
 func TestStutter(t *testing.T) {
-	var values = []byte{0, 1, 2, 3, 4, 5, 6, 255}
+	values := []byte{0, 1, 2, 3, 4, 5, 6, 255}
 	r, w := io.Pipe()
 
 	go func() {
 		for _, v := range values {
-			w.Write([]byte{v})
+			_, err := w.Write([]byte{v})
+			assert.NoError(t, err)
 		}
 	}()
 
 	var decodedValue polyio.ByteSlice = make([]byte, len(values))
-	assert.Nil(t, decodedValue.Decode(r))
+	ctxtest.AssertTerminatesQuickly(t, func() {
+		assert.NoError(t, decodedValue.Decode(r))
+	})
 	for i, v := range values {
 		assert.Equal(t, decodedValue[i], v)
 	}
 }
 
 func testByteSlices(t *testing.T, serial ...polyio.ByteSlice) {
+	t.Helper()
 	a := assert.New(t)
 	r, w := io.Pipe()
 	done := make(chan struct{})

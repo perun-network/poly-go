@@ -15,6 +15,7 @@ import (
 
 // GenericDatabaseTest provides generic sortedkv tests.
 func GenericDatabaseTest(t *testing.T, database sortedkv.Database) {
+	t.Helper()
 	test := DatabaseTest{T: t}
 	t.Run("Generic database test", func(t *testing.T) {
 		test.Database = database
@@ -138,8 +139,7 @@ func (d *DatabaseTest) GetBytes(key string) []byte {
 
 // MustFailGet tests the get functionality.
 func (d *DatabaseTest) MustFailGet(key string) {
-	_, err := d.Database.Get(key)
-	if err == nil {
+	if _, err := d.Database.Get(key); err == nil {
 		d.Errorf("Get() did not fail when expected to ([%q]).\n", key)
 	}
 }

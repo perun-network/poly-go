@@ -127,13 +127,13 @@ type ConcurrentT struct {
 
 // NewConcurrent creates a new concurrent testing object.
 func NewConcurrent(t require.TestingT) *ConcurrentT {
-	return NewConcurrentCtx(t, context.Background())
+	return NewConcurrentCtx(context.Background(), t)
 }
 
 // NewConcurrentCtx creates a new concurrent testing object controlled by a
 // context. If that context expires, any ongoing stages and wait calls will
 // fail.
-func NewConcurrentCtx(t require.TestingT, ctx context.Context) *ConcurrentT {
+func NewConcurrentCtx(ctx context.Context, t require.TestingT) *ConcurrentT {
 	return &ConcurrentT{
 		t:        t,
 		stages:   make(map[string]*stage),
