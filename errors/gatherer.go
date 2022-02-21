@@ -65,15 +65,15 @@ func (g *Gatherer) Add(err error) {
 
 	g.mutex.Lock()
 	g.errs = append(g.errs, err)
-	g.mutex.Unlock()
 
 	select {
 	case <-g.failed:
+		g.mutex.Unlock()
 		return
 	default:
+		close(g.failed)
+		g.mutex.Unlock()
 	}
-
-	close(g.failed)
 
 	for _, fn := range g.onFails {
 		fn()
