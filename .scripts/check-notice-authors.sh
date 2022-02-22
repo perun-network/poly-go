@@ -27,11 +27,6 @@ declare -A assumed_authors
 for c in $commits; do
     echo "Checking commit: $c"
     author=$(git show -s --format='%an <%ae>' $c)
-    # Check Signed-Off-By message
-    if ! git show -s --format='%B' $c | grep -wq "Signed-off-by: $author"; then
-        echo "Commit $c is missing or has wrong 'Signed-off-by' message."
-        exit_code=1
-    fi
 
     # Get the notice file of the commit and check that the author is in it.
     notice=$(git show $c:NOTICE 2> /dev/null || true)
