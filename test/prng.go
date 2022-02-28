@@ -65,3 +65,10 @@ func Seed(seed string, args ...interface{}) int64 {
 	}
 	return int64(hasher.Sum64())
 }
+
+// NameStr endows a string with a function `Name() string` that returns itself.
+// This is helpful for using strings as a first argument to `Prng`.
+type NameStr string
+
+// Name returns the string underlying NameStr.
+func (s NameStr) Name() string { return string(s) }
